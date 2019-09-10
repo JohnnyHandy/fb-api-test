@@ -1,0 +1,12 @@
+<p>
+    ID: <%= user.id %><br/>
+    Username: <%= user.username %><br/>
+    Name: <%= user.displayName %><br/>
+    <% if (user.emails) { %>
+    Email: <%= user.emails[0].value %><br/>
+    <% } %>
+    </p>
+    <a href='/profile/1032468393518744/photos'>Go to Album</a>
+    <form action='/profile/1032468393518744/photos/' method='POST'>
+        <input type='submit'/>
+    </form>
