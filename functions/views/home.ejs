@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+
+<h1>Facebook API Test</h1>
+<h2>Simple Login</h2>
+<% if (!user) { %>
+	<p>Welcome! Please <a href="/login"><button type="button" class="btn btn-primary">Login</button></a>.</p>
+<% } else { %>
+	<p>Hello, <%= user.username %>. View your <a href="/profile">profile</a>.</p>
+<% } %>
+<h2>Facebook Share Button</h2>
+<p>The button below is able to share a link (https://www.google.com in this example) to a profile. As stated on the <a href ='https://developers.facebook.com/docs/plugins/share-button/'> Share Button Documentation</a>, it is not necessary to have Facebook Login in order to share a link. </p>
+<div class="fb-share-button" data-href="https://www.google.com/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.google.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartilhar</a></div>
+
+<h2>Share Dialog </h2>
+<p>The Share Dialog also enables you to share links to a person's profile without them having to use Facebook Login; In this example, the Burger Builder App is shared. <a href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Read the Share Dialog guide</a> to learn more about how it works.</p>
+<button type="button" class="btn btn-primary" id="shareBtn">Share Dialog</button>
+<script>
+		document.getElementById('shareBtn').onclick = function() {
+		  FB.ui({
+			display: 'popup',
+			method: 'share',
+			hashtag:'#burgerbuilder',
+			href: 'https://react-my-burger-25a7f.firebaseapp.com/',
+		  }, function(response){});
+		}
+		</script>
+<% include ../partials/footer %>
